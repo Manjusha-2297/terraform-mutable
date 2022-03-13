@@ -1,2 +1,0 @@
-dev:
-	@echo "sample dev"
