@@ -1,2 +1,2 @@
-sample: clean
+sample:
 	@echo "sample Makefile"
