@@ -4,3 +4,9 @@ resource "aws_vpc" "main" {
     Name = var.env
   }
 }
+
+resource "aws_vpc_ipv4_cidr_block_association" "private_cidr" {
+  count = length(var.private_vpc_cidr)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = element(var.private_vpc_cidr, count.index)
+}
