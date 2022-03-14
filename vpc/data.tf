@@ -9,5 +9,5 @@ data "aws_vpc" "default" {
 }
 
 output "vpc" {
-  value = data.aws_vpc.default
+  value = data.aws_vpc.default.main_route_table_id
 }
