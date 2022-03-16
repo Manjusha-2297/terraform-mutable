@@ -3,7 +3,7 @@ resource "aws_route_table" "public" {
 
   route = [
     {
-      cidr_block                 = [var.default_vpc_cidr]
+      cidr_block                 = [ var.default_vpc_cidr ]
       egress_only_gateway_id     = ""
       gateway_id                 = ""
       instance_id                = ""
@@ -29,7 +29,7 @@ resource "aws_route_table" "private" {
 
   route = [
     {
-    cidr_block                 = [var.default_vpc_cidr]
+    cidr_block                 = [ var.default_vpc_cidr ]
     egress_only_gateway_id     = ""
     gateway_id                 = ""
     instance_id                = ""
