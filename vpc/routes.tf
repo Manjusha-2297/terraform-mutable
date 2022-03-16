@@ -45,10 +45,10 @@ resource "aws_route_table" "public" {
 #    }
 #  ]
 
-  tags = {
-    Name = "private-rt-${var.env}-vpc"
-  }
-}
+#  tags = {
+#    Name = "private-rt-${var.env}-vpc"
+#  }
+#}
 
 
 resource "aws_route_table_association" "public" {
