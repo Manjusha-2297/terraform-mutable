@@ -31,6 +31,12 @@ resource "aws_route" "private_peer_add" {
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
 }
 
+resource "aws_route" "route-for-ngw" {
+  route_table_id         = aws_route_table.private.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.ngw.id
+}
+
 resource "aws_route_table_association" "public" {
   count = length(aws_subnet.public.*.id)
   subnet_id      = element(aws_subnet.public.*.id, count.index)
