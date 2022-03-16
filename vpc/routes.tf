@@ -20,7 +20,7 @@ resource "aws_route" "public_peer_add" {
 }
 
 resource "aws_route" "private_peer_add" {
-  route_table_id = aws_route_table.public.id
+  route_table_id = aws_route_table.private.id
   destination_cidr_block = var.default_vpc_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
 }
