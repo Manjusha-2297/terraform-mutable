@@ -32,7 +32,7 @@ resource "aws_security_group" "allow_mongodb" {
     from_port        = 27017
     to_port          = 27017
     protocol         = "tcp"
-    cidr_blocks      = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
+    cidr_blocks      = data.terraform_remote_state.vpc.outputs.VPC_CIDR
     ipv6_cidr_blocks = []
 }
 
