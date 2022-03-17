@@ -58,10 +58,9 @@ resource "aws_security_group" "allow_mongodb" {
   }
 }
 
-resource "null_resource" "mongodb-apply" {
-  provisioner "remote-exec" {
-    host = aws_spot_instance_request.mongodb.private_ip
-
-
-}
-}
+#resource "null_resource" "mongodb-apply" {
+#  provisioner "remote-exec" {
+#    host = aws_spot_instance_request.mongodb.private_ip
+#
+#}
+#}
