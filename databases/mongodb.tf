@@ -26,6 +26,9 @@ resource "aws_security_group" "allow_mongodb" {
     protocol         = "tcp"
     cidr_blocks      = local.all_cidr_vpc
     ipv6_cidr_blocks = []
+    self             = false
+    prefix_list_ids  = []
+    security_groups  = []
   },
   {
     description      = "MONGODB"
@@ -34,6 +37,9 @@ resource "aws_security_group" "allow_mongodb" {
     protocol         = "tcp"
     cidr_blocks      = data.terraform_remote_state.vpc.outputs.VPC_CIDR
     ipv6_cidr_blocks = []
+    self             = false
+    prefix_list_ids  = []
+    security_groups  = []
 }
 
     ]
