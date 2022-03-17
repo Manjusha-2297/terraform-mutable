@@ -22,5 +22,5 @@ data "aws_secretsmanager_secret_version" "secrets" {
 }
 
 output "secrets" {
-  value = data
+  value = data.aws_secretsmanager_secret_version.secrets
 }
