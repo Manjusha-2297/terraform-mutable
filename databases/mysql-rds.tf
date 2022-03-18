@@ -52,3 +52,4 @@ resource "aws_db_instance" "mysql" {
   vpc_security_group_ids = [aws_security_group.mysql-rds.id]
   identifier             = "mysql-${var.env}"
 }
+
