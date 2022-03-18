@@ -58,9 +58,18 @@ resource "aws_security_group" "allow_mongodb" {
   }
 }
 
-#resource "null_resource" "mongodb-apply" {
-#  provisioner "remote-exec" {
-#    host = aws_spot_instance_request.mongodb.private_ip
-#
-#}
-#}
+resource "null_resource" "mongodb-apply" {
+  provisioner "remote-exec" {
+    connection {
+      host     = aws_spot_instance_request.mongodb.private_ip
+      user     = jsonencode(data.aws_secretsmanager_secret_version.secrets.secret_string)["ssh_user"]
+      password = jsonencode(data.aws_secretsmanager_secret_version.secrets.secret_string)["ssh_password"]
+    }
+  }
+  inline = [
+    "sudo yum install python3-pip -y",
+    "pip3 install pip --upgrade",
+    "pip3 install ansible==4.1.0",
+    "ansible-pull -i localhost, -U https://github.com/Manjusha-2297/ansible.git roboshop-pull.yml -e COMPONENT = mongodb "
+  ]
+}
