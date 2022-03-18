@@ -12,7 +12,7 @@ resource "aws_elasticache_cluster" "redis" {
 
 resource "aws_elasticache_subnet_group" "subnet-group" {
   name       = "redis-${var.env}"
-  subnet_ids = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_CIDR
+  subnet_ids = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS
 }
 
 resource "aws_security_group" "allow_redis" {
