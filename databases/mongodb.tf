@@ -77,7 +77,7 @@ resource "null_resource" "mongodb-apply" {
 }
 
 resource "aws_route53_record" "mongodb" {
-  zone_id = data.terraform_remote_state.vpc.outputs.PRIVATE_HOSTED_ZONE_ID
+  zone_id = data.terraform_remote_state.vpc.outputs.private_hosted_zone_id
   name    = "mongodb-${var.env}.roboshop.internal"
   type    = "A"
   ttl     = "300"
