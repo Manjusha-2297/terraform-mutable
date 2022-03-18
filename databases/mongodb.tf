@@ -59,6 +59,9 @@ resource "aws_security_group" "allow_mongodb" {
 }
 
 resource "null_resource" "mongodb-apply" {
+  triggers = {
+    abc = aws_spot_instance_request.mongodb.private_ip
+  }
   provisioner "remote-exec" {
     connection {
       host     = aws_spot_instance_request.mongodb.private_ip
