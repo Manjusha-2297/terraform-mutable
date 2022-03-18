@@ -48,5 +48,5 @@ resource "aws_security_group" "allow_redis" {
 }
 
 output "elastic" {
-  value = aws_elasticache_cluster.redis
+  value = aws_elasticache_cluster.redis.cache_nodes[0].address
 }
