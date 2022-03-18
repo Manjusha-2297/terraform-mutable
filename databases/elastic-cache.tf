@@ -46,3 +46,7 @@ resource "aws_security_group" "allow_redis" {
     Name = "allow_redis_${var.env}"
   }
 }
+
+output "elastic" {
+  value = aws_elasticache_cluster.redis
+}

@@ -53,3 +53,11 @@ resource "aws_db_instance" "mysql" {
   identifier             = "mysql-${var.env}"
 }
 
+resource "aws_route53_record" "mysql" {
+  zone_id = data.terraform_remote_state.vpc.outputs.private_hosted_zone_id
+  name    = "mysql-${var.env}.roboshop.internal"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [aws_db_instance.mysql.address]
+}
+
