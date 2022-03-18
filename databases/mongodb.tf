@@ -68,8 +68,9 @@ resource "null_resource" "mongodb-apply" {
 
     inline = [
       "sudo yum install python3-pip -y",
-      "pip3 install pip --upgrade",
-      "pip3 install ansible==4.1.0",
+      "sudo pip3 install pip --upgrade",
+      "sudo pip3 install ansible==4.1.0",
+      "sudo pip3 install ansible==4.1.0",
       "ansible-pull -i localhost, -U https://github.com/Manjusha-2297/ansible.git roboshop-pull.yml -e COMPONENT = mongodb "
     ]
   }
