@@ -1,4 +1,4 @@
-resource "aws_db_subnet_group" "default" {
+resource "aws_db_subnet_group" "mysql" {
   name       = "mysql-dbsg-${var.env}"
   subnet_ids = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS
 
@@ -36,4 +36,19 @@ resource "aws_security_group" "mysql-rds" {
   tags = {
     Name = "allow_mysql_${var.env}"
   }
+}
+
+resource "aws_db_instance" "mysql" {
+  allocated_storage    = 10
+  engine               = "mysql"
+  engine_version       = "5.7"
+  instance_class       = "db.t3.micro"
+  name                 = "terrafrom"
+  username             = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["rds_mysql_user"]
+  password             = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["rds_mysql_pass"]
+  parameter_group_name = "default.mysql5.7"
+  skip_final_snapshot  = true
+  db_subnet_group_name   = aws_db_subnet_group.mysql.name
+  vpc_security_group_ids = [aws_security_group.mysql-rds.id]
+  identifier             = "mysql-${var.env}"
 }
