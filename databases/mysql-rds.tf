@@ -61,3 +61,16 @@ resource "aws_route53_record" "mysql" {
   records = [aws_db_instance.mysql.address]
 }
 
+resource "null_resource" "mysql-schema-load" {
+  provisioner "local-exec" {
+    command = <<EOT
+
+curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
+cd /tmp
+unzip -o /tmp/mysql.zip
+cd mysql-main
+mysql -h mysql-${var.env}.roboshop.internal -u ${jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["rds_mysql_user"]} -p${jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["rds_mysql_pass"]} <shipping.sql
+EOT
+  }
+}
+
