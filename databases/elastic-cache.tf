@@ -47,6 +47,10 @@ resource "aws_security_group" "allow_redis" {
   }
 }
 
-output "elastic" {
-  value = aws_elasticache_cluster.redis.cache_nodes[0].address
+resource "aws_route53_record" "redis" {
+  zone_id = data.terraform_remote_state.vpc.outputs.private_hosted_zone_id
+  name    = "redis-${var.env}.roboshop.internal"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [aws_elasticache_cluster.redis.cache_nodes[0].address]
 }
