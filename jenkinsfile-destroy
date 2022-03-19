@@ -2,16 +2,17 @@ pipeline {
     agent any
     stages {
 
-        stage('APP'){
+        stage('APP') {
             parallel {
-                stage('cart')
+                stage('cart') {
                     steps {
-                        dir('cart'){
-                        sh '''
+                        dir('cart') {
+                            sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
                          cd terraform-mutable
                          make dev-destroy
                          '''
+                        }
                     }
                 }
             }
