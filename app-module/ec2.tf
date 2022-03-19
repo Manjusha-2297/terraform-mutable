@@ -10,9 +10,10 @@ resource "aws_instance" "on-demand" {
 }
 
 resource "aws_spot_instance_request" "spot" {
+  count = var.spot_count
   ami           = data.aws_ami.ami.id
   instance_type = var.instance_type
-  subnet_id = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS[0]
+  subnet_id = element(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS, count.index )
   vpc_security_group_ids = [aws_security_group.allow_app_component.id]
   wait_for_fulfillment = true
 
