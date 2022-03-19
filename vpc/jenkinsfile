@@ -4,15 +4,18 @@ pipeline {
     stages {
 
         stage('Terraform Apply') {
-                steps {
-                    sh 'cd vpc; echo dev'
-                }
+            steps {
+                sh 'cd vpc; echo dev'
+            }
+        }
+    }
+
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
 
-post {
-    always {
-        cleanWs()
-    }
-}
+
