@@ -4,11 +4,9 @@ pipeline {
     stages {
 
         stage('Terraform Apply') {
-            stage{
                 steps {
                     sh 'echo dev'
                 }
-            }
         }
     }
 }
