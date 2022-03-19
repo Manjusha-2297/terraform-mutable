@@ -6,9 +6,15 @@ pipeline {
         stage('Terraform Apply') {
 
                 steps {
-                    sh 'echo dev'
+                    sh 'cd databases; echo dev'
                 }
 
         }
+    }
+}
+
+post {
+    always {
+        cleanWs()
     }
 }
