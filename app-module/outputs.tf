@@ -1,3 +1,1 @@
-output "sample" {
-  value = "sample"
-}
+resource "aws_instance" "" {}
