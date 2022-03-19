@@ -9,6 +9,7 @@ pipeline {
                         dir('cart'){
                         sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
+                         cd terraform-mutable
                          make dev-destroy
                          '''
                     }
