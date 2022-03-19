@@ -73,4 +73,3 @@ mysql -h mysql-${var.env}.roboshop.internal -u ${jsondecode(data.aws_secretsmana
 EOT
   }
 }
-

@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Terraform Apply') {
+            stage{
+                steps {
+                    sh 'echo dev'
+                }
+            }
+        }
+    }
+}
