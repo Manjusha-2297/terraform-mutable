@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('APP'){
+            parallel {
+                stage('cart')
+                dir('cart'){
+                    steps {
+                        sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
+                         make dev-destroy
+                         '''
+                    }
+                }
+            }
+        }
+    }
+}
