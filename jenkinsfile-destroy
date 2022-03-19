@@ -15,6 +15,66 @@ pipeline {
                         }
                     }
                 }
+
+                stage('catalogue') {
+                    steps {
+                        dir('catalogue') {
+                            sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue .
+                         cd terraform-mutable
+                         make dev-destroy
+                         '''
+                        }
+                    }
+                }
+
+                stage('frontend') {
+                    steps {
+                        dir('frontend') {
+                            sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/frontend .
+                         cd terraform-mutable
+                         make dev-destroy
+                         '''
+                        }
+                    }
+                }
+
+                stage('payment') {
+                    steps {
+                        dir('payment') {
+                            sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/payment .
+                         cd terraform-mutable
+                         make dev-destroy
+                         '''
+                        }
+                    }
+                }
+
+                stage('shipping') {
+                    steps {
+                        dir('shipping') {
+                            sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/shipping .
+                         cd terraform-mutable
+                         make dev-destroy
+                         '''
+                        }
+                    }
+                }
+
+                stage('user') {
+                    steps {
+                        dir('user') {
+                            sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/user .
+                         cd terraform-mutable
+                         make dev-destroy
+                         '''
+                        }
+                    }
+                }
             }
         }
     }
