@@ -13,3 +13,10 @@ resource "aws_lb_target_group" "target-group" {
     timeout = 4
   }
 }
+
+resource "aws_lb_target_group_attachment" "instance-attach" {
+  count = length(local.all_instance_id)
+  target_group_arn = aws_lb_target_group.target-group.arn
+  target_id        = element(local.all_instance_id, count.index)
+  port             = var.port
+}
