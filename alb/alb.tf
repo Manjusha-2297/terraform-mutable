@@ -1,12 +1,12 @@
 resource "aws_lb" "internal" {
-  name               = "internal-${var.env}"
+  name               = "backend-${var.env}"
   internal           = true
   load_balancer_type = "application"
   security_groups    = [aws_security_group.internal-lb.id]
   subnets            = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS
 
   tags = {
-    Environment = "internal-${var.env}"
+    Environment = "backend-${var.env}"
   }
 }
 
