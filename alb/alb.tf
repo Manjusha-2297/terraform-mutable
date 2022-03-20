@@ -18,7 +18,7 @@ resource "aws_lb" "public" {
   subnets            = data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNET_IDS
 
   tags = {
-    Environment = "public-${var.env}"
+    Environment = "internal-${var.env}"
   }
 }
 
