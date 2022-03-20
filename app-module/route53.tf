@@ -15,3 +15,4 @@ resource "aws_route53_record" "public-lb" {
   ttl     = "300"
   records = [data.terraform_remote_state.alb.outputs.PUBLIC_LB_NAME]
 }
+

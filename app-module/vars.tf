@@ -5,3 +5,4 @@ variable "instance_type" {}
 variable "component" {}
 variable "port" {}
 variable "is_public" {}
+variable "priority" {}
