@@ -1,7 +1,7 @@
-output "internal_lb_name" {
+output "INTERNAL_LB_NAME" {
   value = aws_lb.internal.dns_name
 }
 
-output "public_lb_name" {
+output "PUBLIC_LB_NAME" {
   value = aws_lb.public.dns_name
 }

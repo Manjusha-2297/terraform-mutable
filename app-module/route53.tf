@@ -4,7 +4,7 @@ resource "aws_route53_record" "app-lb" {
   name    = "${var.component}-${var.env}.roboshop.internal"
   type    = "CNAME"
   ttl     = "300"
-  records = [data.terraform_remote_state.alb.outputs.internal_lb_name]
+  records = [data.terraform_remote_state.alb.outputs.INTERNAL_LB_NAME]
 }
 
 resource "aws_route53_record" "public-lb" {
@@ -13,5 +13,5 @@ resource "aws_route53_record" "public-lb" {
   name    = "${var.component}-${var.env}.roboshop.internal"
   type    = "CNAME"
   ttl     = "300"
-  records = [data.terraform_remote_state.alb.outputs.public_lb_name]
+  records = [data.terraform_remote_state.alb.outputs.PUBLIC_LB_NAME]
 }
