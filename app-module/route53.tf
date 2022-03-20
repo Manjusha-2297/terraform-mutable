@@ -1,5 +1,5 @@
 resource "aws_route53_record" "app-lb" {
-  count = var.is_public == "false" ? 1 : 0
+  count   = var.is_public == "false" ? 1 : 0
   zone_id = data.terraform_remote_state.vpc.outputs.private_hosted_zone_id
   name    = "${var.component}-${var.env}.roboshop.internal"
   type    = "CNAME"
@@ -8,7 +8,7 @@ resource "aws_route53_record" "app-lb" {
 }
 
 resource "aws_route53_record" "public-lb" {
-  count = var.is_public == "false" ? 0 : 1
+  count   = var.is_public == "false" ? 0 : 1
   zone_id = data.terraform_remote_state.vpc.outputs.private_hosted_zone_id
   name    = "${var.component}-${var.env}.roboshop.internal"
   type    = "CNAME"
