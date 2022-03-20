@@ -62,6 +62,7 @@ resource "aws_route53_record" "mysql" {
 }
 
 resource "null_resource" "mysql-schema-load" {
+  depends_on = [aws_route53_record.mysql]
   provisioner "local-exec" {
     command = <<EOT
 
