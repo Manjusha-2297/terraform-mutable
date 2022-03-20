@@ -4,3 +4,4 @@ variable "od_count" {}
 variable "instance_type" {}
 variable "component" {}
 variable "port" {}
+variable "is_public" {}
