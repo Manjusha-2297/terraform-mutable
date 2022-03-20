@@ -41,7 +41,7 @@ resource "aws_security_group" "public_lb" {
       from_port        = 80
       to_port          = 80
       protocol         = "tcp"
-      cidr_blocks      = "0.0.0.0/0"
+      cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = []
       self             = false
       prefix_list_ids  = []
@@ -58,6 +58,6 @@ resource "aws_security_group" "public_lb" {
   }
 
   tags = {
-    Name = "allow_mongodb_${var.env}"
+    Name = "public_lb_${var.env}"
   }
 }
