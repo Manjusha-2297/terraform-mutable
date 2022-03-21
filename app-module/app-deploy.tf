@@ -12,7 +12,7 @@ resource "null_resource" "app-deploy" {
 
     inline = [
 
-      "ansible-pull -i localhost, -U https://github.com/Manjusha-2297/ansible.git roboshop-pull.yml -e COMPONENT=${var.component}"
+      "ansible-pull -i localhost, -U https://github.com/Manjusha-2297/ansible.git roboshop-pull.yml -e COMPONENT=${var.component} -e ENV=${var.env}"
     ]
   }
 }
