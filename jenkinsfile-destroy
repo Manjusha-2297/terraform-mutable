@@ -77,5 +77,44 @@ pipeline {
                 }
             }
         }
+
+        stage('DB') {
+            parallel {
+                stage('DB') {
+                    steps {
+                        sh '''
+            cd databases; make ${ENV}-destroy
+            '''
+                    }
+                }
+                stage('ALB') {
+                    steps {
+                        sh '''
+            cd alb; make ${ENV}-destroy
+            '''
+                    }
+                }
+            }
+        }
+
+        stage('VPC') {
+            steps {
+                sh '''
+        cd vpc 
+        terraform init -backend-config=env/dev-backend.tfvars -no-color
+        terraform destroy -target=aws_nat_gateway.ngw -var-file=env/dev.tfvars  -auto-approve
+        '''
+            }
+        }
+
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+
+}
     }
 }
