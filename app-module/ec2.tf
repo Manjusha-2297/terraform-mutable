@@ -6,6 +6,7 @@ resource "aws_instance" "on-demand" {
   vpc_security_group_ids = [aws_security_group.allow_app_component.id]
   tags = {
     Name = "${var.component}-${var.env}"
+    Monitor = "yes"
   }
 }
 
@@ -27,6 +28,13 @@ resource "aws_ec2_tag" "spot-ec2-tag" {
   resource_id = element(aws_spot_instance_request.spot.*.spot_instance_id, count.index)
   key         = "Name"
   value       = "${var.component}-${var.env}"
+}
+
+resource "aws_ec2_tag" "spot-ec2-monitor-tag" {
+  count = var.spot_count
+  resource_id = element(aws_spot_instance_request.spot.*.spot_instance_id, count.index)
+  key         = "Monitor"
+  value       = "yes"
 }
 
 resource "aws_security_group" "allow_app_component" {
@@ -51,6 +59,17 @@ resource "aws_security_group" "allow_app_component" {
       to_port          = var.port
       protocol         = "tcp"
       cidr_blocks      = data.terraform_remote_state.vpc.outputs.VPC_CIDR
+      ipv6_cidr_blocks = []
+      self             = false
+      prefix_list_ids  = []
+      security_groups  = []
+    },
+    {
+      description      = "PROMETHEUS"
+      from_port        = 9100
+      to_port          = 9100
+      protocol         = "tcp"
+      cidr_blocks      = local.default_vpc_cidr
       ipv6_cidr_blocks = []
       self             = false
       prefix_list_ids  = []
