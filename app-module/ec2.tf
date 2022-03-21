@@ -69,7 +69,7 @@ resource "aws_security_group" "allow_app_component" {
       from_port        = 9100
       to_port          = 9100
       protocol         = "tcp"
-      cidr_blocks      = local.default_vpc_cidr
+      cidr_blocks      = local.all_cidr_vpc
       ipv6_cidr_blocks = []
       self             = false
       prefix_list_ids  = []
