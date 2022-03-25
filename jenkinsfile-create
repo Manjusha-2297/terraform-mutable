@@ -16,7 +16,6 @@ pipeline {
     }
 
     stage('DB') {
-      parallel {
         stage('DB') {
           steps {
             sh '''
@@ -32,10 +31,10 @@ pipeline {
           }
         }
       }
-    }
+
 
     stage('APP') {
-      parallel {
+
 
         stage('cart') {
           steps {
@@ -118,7 +117,6 @@ pipeline {
       }
     }
 
-  }
 
   post {
     always {
