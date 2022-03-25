@@ -16,7 +16,8 @@ pipeline {
     }
 
     stage('DB') {
-
+      parallel {
+        stage('DB') {
           steps {
             sh '''
             cd databases; make ${ENV}
@@ -30,9 +31,12 @@ pipeline {
             '''
           }
         }
+      }
+    }
 
 
-        stage('cart') {
+
+    stage('cart') {
           steps {
             dir('cart') {
               sh '''
