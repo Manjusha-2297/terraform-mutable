@@ -34,96 +34,96 @@ pipeline {
       }
     }
 
-
     stage('APP') {
+      
 
-
-      stage('cart') {
-        steps {
-          dir('cart') {
-            sh '''
-                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
+        stage('cart') {
+          steps {
+            dir('cart') {
+              sh '''
+                git clone https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/cart .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
               '''
+            }
           }
         }
-      }
 
-      stage('catalogue') {
-        steps {
-          dir('catalogue') {
-            sh '''
-                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue  .
+        stage('catalogue') {
+          steps {
+            dir('catalogue') {
+              sh '''
+                git clone https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/catalogue  .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
               '''
+            }
           }
         }
-      }
 
-      stage('frontend') {
-        steps {
-          dir('frontend') {
-            sh '''
-                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/frontend .
+        stage('frontend') {
+          steps {
+            dir('frontend') {
+              sh '''
+                git clone https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/frontend .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
               '''
+            }
           }
         }
-      }
 
-      stage('payment') {
-        steps {
-          dir('payment') {
-            sh '''
-                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/payment .
+        stage('payment') {
+          steps {
+            dir('payment') {
+              sh '''
+                git clone https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/payment .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
               '''
+            }
           }
         }
-      }
 
-      stage('shipping') {
-        steps {
-          dir('shipping') {
-            sh '''
-                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/shipping .
+        stage('shipping') {
+          steps {
+            dir('shipping') {
+              sh '''
+                git clone https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/shipping .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
               '''
+            }
           }
         }
-      }
 
-      stage('user') {
-        steps {
-          dir('user') {
-            sh '''
-                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/user .
+        stage('user') {
+          steps {
+            dir('user') {
+              sh '''
+                git clone https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/user .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
               '''
+            }
           }
         }
-      }
+
 
     }
-  }
 
+  }
 
   post {
     always {
       cleanWs()
     }
   }
-}
 
+}
