@@ -40,7 +40,7 @@ pipeline {
           steps {
             dir('cart') {
               sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha2297/DEVOPS/_git/cart .
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
@@ -53,7 +53,7 @@ pipeline {
           steps {
             dir('catalogue') {
               sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha2297/DEVOPS/_git/catalogue  .
+                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/catalogue  .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
@@ -66,7 +66,7 @@ pipeline {
           steps {
             dir('frontend') {
               sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha2297/DEVOPS/_git/frontend .
+                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/frontend .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
@@ -79,7 +79,7 @@ pipeline {
           steps {
             dir('payment') {
               sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha2297/DEVOPS/_git/payment .
+                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/payment .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
@@ -92,7 +92,7 @@ pipeline {
           steps {
             dir('shipping') {
               sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha2297/DEVOPS/_git/shipping .
+                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/shipping .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
@@ -105,7 +105,7 @@ pipeline {
           steps {
             dir('user') {
               sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha2297/DEVOPS/_git/user .
+                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/user .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}
