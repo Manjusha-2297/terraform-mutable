@@ -62,18 +62,7 @@ pipeline {
           }
         }
 
-        stage('frontend') {
-          steps {
-            dir('frontend') {
-              sh '''
-                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/frontend .
-                ls -ltr
-                cd terraform-mutable
-                make ${ENV}
-              '''
-            }
-          }
-        }
+
 
         stage('payment') {
           steps {
@@ -114,7 +103,18 @@ pipeline {
           }
         }
 
-
+    stage('frontend') {
+      steps {
+        dir('frontend') {
+          sh '''
+                git clone https://manjusha2297@dev.azure.com/manjusha9722/DEVOPS/_git/frontend .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}
+              '''
+        }
+      }
+    }
 
 
   }
