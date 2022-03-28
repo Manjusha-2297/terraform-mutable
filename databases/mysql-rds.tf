@@ -43,7 +43,7 @@ resource "aws_db_instance" "mysql" {
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t3.micro"
-  name                 = "terraform"
+  db_name                 = "terraform"
   username             = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["rds_mysql_user"]
   password             = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["rds_mysql_pass"]
   parameter_group_name = "default.mysql5.7"
