@@ -6,3 +6,4 @@ variable "component" {}
 variable "port" {}
 variable "is_public" {}
 variable "priority" {}
+variable "APP_VERSION" {}

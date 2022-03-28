@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'COMPONENT', defaultValue: '', description: 'Which Application Component')
+        string(name: 'ENV', defaultValue: '', description: 'Which Environment')
+        string(name: 'APP_VERSION', defaultValue: '', description: 'Which Application Version')
+    }
+
+    stages {
+        stage ('Deployment') {
+            steps{
+                dir('APP'){
+                    sh '''
+                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/${COMPONENT} .
+                         cd app/terraform-mutable
+                         export TF_VAR_APP_VERSION=${APP_VERSION}
+                         make ${ENV}
+                    '''
+                }
+            }
+
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
+
