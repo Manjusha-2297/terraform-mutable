@@ -10,7 +10,7 @@ pipeline {
                             sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
                          cd terraform-mutable
-                         make dev-destroy
+                         make ${ENV}-destroy
                          '''
                         }
                     }
@@ -22,7 +22,7 @@ pipeline {
                             sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue .
                          cd terraform-mutable
-                         make dev-destroy
+                         make ${ENV}-destroy
                          '''
                         }
                     }
@@ -34,7 +34,7 @@ pipeline {
                             sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/frontend .
                          cd terraform-mutable
-                         make dev-destroy
+                         make ${ENV}-destroy
                          '''
                         }
                     }
@@ -46,7 +46,7 @@ pipeline {
                             sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/payment .
                          cd terraform-mutable
-                         make dev-destroy
+                         make ${ENV}-destroy
                          '''
                         }
                     }
@@ -58,7 +58,7 @@ pipeline {
                             sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/shipping .
                          cd terraform-mutable
-                         make dev-destroy
+                         make ${ENV}-destroy
                          '''
                         }
                     }
@@ -70,7 +70,7 @@ pipeline {
                             sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/user .
                          cd terraform-mutable
-                         make dev-destroy
+                         make ${ENV}-destroy
                          '''
                         }
                     }
