@@ -10,6 +10,16 @@ pipeline {
     stages {
         stage ('Deployment') {
             steps{
+                script { //plugin is available for this - badge
+                    if("${ENV}" == "dev"){
+                        COLORCODE="orange"
+                    } else {
+                        COLORCODE="green"
+                    }
+                    addShortText background: "${COLORCODE}", color: 'black', borderColor: 'yellow', text: "${COMPONENT}"
+                    addShortText background: "${COLORCODE}", color: 'black', borderColor: 'yellow', text: "${APP_VERSION}"
+                    addShortText background: "${COLORCODE}", color: 'black', borderColor: 'yellow', text: "${ENV}"
+                }
                 dir('APP'){
                     sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/${COMPONENT} .
