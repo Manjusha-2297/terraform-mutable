@@ -13,7 +13,7 @@ pipeline {
                 dir('APP'){
                     sh '''
                          git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/${COMPONENT} .
-                         cd app/terraform-mutable
+                         cd terraform-mutable
                          export TF_VAR_APP_VERSION=${APP_VERSION}
                          make ${ENV}
                     '''
