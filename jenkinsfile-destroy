@@ -1,17 +1,25 @@
 pipeline {
     agent any
+
+    parameters {
+        string(name: 'ENV', defaultValue: '', description: 'Env')
+    }
+
+
     stages {
 
-
+        stage('APP') {
+            parallel {
 
                 stage('cart') {
                     steps {
                         dir('cart') {
                             sh '''
-                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
-                         cd terraform-mutable
-                         make ${ENV}-destroy
-                         '''
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/cart .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}-destroy
+              '''
                         }
                     }
                 }
@@ -20,10 +28,11 @@ pipeline {
                     steps {
                         dir('catalogue') {
                             sh '''
-                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue .
-                         cd terraform-mutable
-                         make ${ENV}-destroy
-                         '''
+                https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}-destroy
+              '''
                         }
                     }
                 }
@@ -32,10 +41,11 @@ pipeline {
                     steps {
                         dir('frontend') {
                             sh '''
-                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/frontend .
-                         cd terraform-mutable
-                         make ${ENV}-destroy
-                         '''
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/frontend .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}-destroy
+              '''
                         }
                     }
                 }
@@ -44,10 +54,11 @@ pipeline {
                     steps {
                         dir('payment') {
                             sh '''
-                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/payment .
-                         cd terraform-mutable
-                         make ${ENV}-destroy
-                         '''
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/payment .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}-destroy
+              '''
                         }
                     }
                 }
@@ -56,10 +67,11 @@ pipeline {
                     steps {
                         dir('shipping') {
                             sh '''
-                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/shipping .
-                         cd terraform-mutable
-                         make ${ENV}-destroy
-                         '''
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/shipping .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}-destroy
+              '''
                         }
                     }
                 }
@@ -68,15 +80,17 @@ pipeline {
                     steps {
                         dir('user') {
                             sh '''
-                         git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/user .
-                         cd terraform-mutable
-                         make ${ENV}-destroy
-                         '''
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/user .
+                ls -ltr
+                cd terraform-mutable
+                make ${ENV}-destroy
+              '''
                         }
                     }
                 }
 
-
+            }
+        }
 
         stage('DB') {
             parallel {
@@ -116,4 +130,3 @@ pipeline {
     }
 
 }
-
