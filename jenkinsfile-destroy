@@ -24,7 +24,7 @@ pipeline {
                     steps {
                         dir('catalogue') {
                             sh '''
-                https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue .
+                git clone https://manjusha9722@dev.azure.com/manjusha9722/DevOps/_git/catalogue .
                 ls -ltr
                 cd terraform-mutable
                 make ${ENV}-destroy
