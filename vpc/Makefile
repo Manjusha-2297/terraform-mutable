@@ -18,3 +18,4 @@ dev-destroy: clean
 prod-destroy: clean
 	@terraform init -backend-config=env/prod-backend.tfvars -no-color
 	@terraform destroy -auto-approve -var-file=env/prod.tfvars -no-color
+
