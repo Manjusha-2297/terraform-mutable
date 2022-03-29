@@ -7,10 +7,6 @@ pipeline {
 
 
     stages {
-
-        stage('APP') {
-            parallel {
-
                 stage('cart') {
                     steps {
                         dir('cart') {
@@ -89,8 +85,8 @@ pipeline {
                     }
                 }
 
-            }
-        }
+
+
 
         stage('DB') {
             parallel {
