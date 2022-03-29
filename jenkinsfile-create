@@ -6,6 +6,34 @@ pipeline {
   }
   stages {
 
+    stage('VPC') {
+      steps {
+        sh '''
+        cd vpc 
+        make ${ENV}
+        '''
+      }
+    }
+
+    stage('DB') {
+      parallel {
+        stage('DB') {
+          steps {
+            sh '''
+            cd databases; make ${ENV}
+            '''
+          }
+        }
+        stage('ALB') {
+          steps {
+            sh '''
+            cd alb; make ${ENV}
+            '''
+          }
+        }
+      }
+    }
+
     stage('cart') {
           steps {
             dir('cart') {
@@ -82,34 +110,6 @@ pipeline {
                 cd terraform-mutable
                 make ${ENV}
               '''
-        }
-      }
-    }
-
-    stage('VPC') {
-      steps {
-        sh '''
-        cd vpc 
-        make ${ENV}
-        '''
-      }
-    }
-
-    stage('DB') {
-      parallel {
-        stage('DB') {
-          steps {
-            sh '''
-            cd databases; make ${ENV}
-            '''
-          }
-        }
-        stage('ALB') {
-          steps {
-            sh '''
-            cd alb; make ${ENV}
-            '''
-          }
         }
       }
     }
