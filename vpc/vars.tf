@@ -7,3 +7,4 @@ variable "AZS" {}
 variable "default_vpc" {}
 variable "default_vpc_cidr" {}
 variable "private_hosted_zone_id" {}
+variable "public_hosted_zone_id" {}

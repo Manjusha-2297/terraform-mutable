@@ -33,3 +33,7 @@ output "DEFAULT_VPC_CIDR" {
 output "private_hosted_zone_id" {
   value = var.private_hosted_zone_id
 }
+
+output "public_hosted_zone_id" {
+  value = var.public_hosted_zone_id
+}
