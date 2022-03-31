@@ -46,6 +46,17 @@ resource "aws_security_group" "public_lb" {
       self             = false
       prefix_list_ids  = []
       security_groups  = []
+    },
+    {
+      description      = "HTTPS"
+      from_port        = 443
+      to_port          = 443
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = []
+      self             = false
+      prefix_list_ids  = []
+      security_groups  = []
     }
 
   ]
